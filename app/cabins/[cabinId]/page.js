@@ -30,7 +30,7 @@ export default async function Page({ params }) {
 
   return (
     <div className="max-w-6xl mx-auto mt-8">
-      <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
+      <div className="grid sm:grid-cols-[3fr_4fr]  grid-cols-1 grid-rows-2 sm:grid-rows-1 gap-20 border border-primary-800 py-3 px-10 mb-24">
         <div className="relative scale-[1.15] -translate-x-3">
           <Image
             src={image}
@@ -40,8 +40,8 @@ export default async function Page({ params }) {
           />
         </div>
 
-        <div>
-          <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
+        <div className="">
+          <h3 className="text-accent-100 font-black text-7xl mb-5 sm:translate-x-[-254px] bg-primary-950 p-6 pb-1 sm:w-[150%]">
             Cabin {name}
           </h3>
 
@@ -75,7 +75,7 @@ export default async function Page({ params }) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">
+        <h2 className="sm:text-5xl text-4xl font-semibold text-center mb-10 text-accent-400 ">
           Reserve {name} today. Pay on arrival.
         </h2>
 

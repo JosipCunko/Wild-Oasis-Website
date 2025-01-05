@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <main className="mt-24 ">
       <Image
-        className="object-cover object-top"
+        className="object-cover object-top 2xl:object-center "
         src={bg}
         placeholder="blur" //Only with import
         quality={80}
@@ -15,7 +15,7 @@ export default function Page() {
       />
 
       <div className="relative z-10 text-center">
-        <h1 className="text-8xl text-primary-50 mb-10 tracking-tight font-normal">
+        <h1 className="text-8xl text-primary-50 mb-10 tracking-tight font-normal  ">
           Welcome to paradise.
         </h1>
         <Link

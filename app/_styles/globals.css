@@ -37,3 +37,14 @@
   --rdp-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
 }
+
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+}

@@ -13,6 +13,7 @@ function Logo() {
         width="60"
         alt="The Wild Oasis logo"
         quality={100}
+        className="hidden sm:inline-block"
       />
       <span className="text-xl font-semibold text-primary-100">
         The Wild Oasis
