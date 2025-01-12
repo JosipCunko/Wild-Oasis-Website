@@ -18,6 +18,14 @@ export default async function Navigation() {
         </li>
         <li>
           <Link
+            href="/restaurant"
+            className="hover:text-accent-400 transition-colors"
+          >
+            Restaurant
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/about"
             className="hover:text-accent-400 transition-colors"
           >

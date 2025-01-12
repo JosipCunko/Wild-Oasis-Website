@@ -152,6 +152,20 @@ export async function getCountries() {
   }
 }
 
+export async function getMeals() {
+  const { data, error } = await supabase
+    .from("restaurant")
+    .select("*")
+    .order("type");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Meals could not be loaded");
+  }
+
+  return data;
+}
+
 /////////////
 // CREATE
 

@@ -135,3 +135,53 @@ export async function createBooking(bookingData, formData) {
   revalidatePath(`/cabins/${bookingData.cabinId}`);
   redirect("/cabins/thankyou");
 }
+
+export async function uploadRestaurantData(formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in.");
+
+  const mealName = formData.get("mealName");
+  const price = Number(formData.get("price"));
+  const ingredients = formData.get("ingredients");
+  const image = formData.get("image");
+  const type = formData.get("mealType");
+
+  if (!mealName || !price || !ingredients || !image || !type) {
+    throw new Error("Please provide all required fields");
+  }
+
+  // Upload image to storage bucket
+  const imageName = `${Date.now()}-${mealName
+    .toLowerCase()
+    .replace(/\s+/g, "-")}.jpg`;
+  const { error: uploadError } = await supabase.storage
+    .from("restaurant")
+    .upload(imageName, image);
+
+  if (uploadError) {
+    console.error(uploadError);
+    throw new Error("Error uploading image");
+  }
+
+  // Get the public URL for the uploaded image
+  const {
+    data: { publicUrl },
+  } = supabase.storage.from("restaurant").getPublicUrl(imageName);
+
+  const { error: dbError } = await supabase.from("restaurant").insert([
+    {
+      mealName,
+      price,
+      ingredients,
+      image: publicUrl,
+      type,
+    },
+  ]);
+
+  if (dbError) {
+    console.error(dbError);
+    throw new Error("Error uploading meal data");
+  }
+
+  revalidatePath("/restaurant");
+}

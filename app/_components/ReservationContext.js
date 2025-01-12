@@ -10,8 +10,6 @@ function ReservationProvider({ children }) {
     to: undefined,
   });
 
-  console.log(range);
-
   return (
     <ReservationContext.Provider value={{ range, setRange }}>
       {children}
